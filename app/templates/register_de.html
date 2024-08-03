@@ -1,0 +1,464 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="text-2xl font-bold mb-4">Register as Job Seeker</h2>
+  <form method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    
+    <div class="callout mx-3">
+      <p class="display-text">Informations de connexion</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Nom d'utilisateur (Login)<span style="color: red;">*</span>
+            {{ form.username(class="form-control", id="id_username") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Mot de passe<span style="color: red;">*</span>
+            {{ form.password1(class="form-control", id="id_password1") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Confirmer mot de passe<span style="color: red;">*</span>
+            {{ form.password2(class="form-control", id="id_password2") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Informations personnelles</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Nom<span style="color: red;">*</span>
+            {{ form.nom(class="form-control", id="id_nom") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Post-nom
+            {{ form.post_nom(class="form-control", id="id_post_nom") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Prénom<span style="color: red;">*</span>
+            {{ form.prenom(class="form-control", id="id_prenom") }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            Date de naissance<span style="color: red;">*</span>
+            {{ form.date_naissance(class="form-control", id="id_date_naissance") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Lieu de naissance<span style="color: red;">*</span>
+            {{ form.lieu_naissance(class="form-control", id="id_lieu_naissance") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Nationalité<span style="color: red;">*</span>
+            {{ form.nationalite(class="form-control", id="id_nationalite") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Sexe<span style="color: red;">*</span>
+            {{ form.sexe(class="form-control", id="id_sexe") }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            Etat civil<span style="color: red;">*</span>
+            {{ form.etat_civil(class="form-control", id="id_etat_civil") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Nombre de personnes à charge<span style="color: red;">*</span>
+            {{ form.personnes_charge(class="form-control", id="id_personnes_charge") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Téléphone<span style="color: red;">*</span>
+            {{ form.telephone(class="form-control", id="id_telephone") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Téléphone 2
+            {{ form.telephone2(class="form-control", id="id_telephone2") }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            E-mail<span style="color: red;">*</span>
+            {{ form.email(class="form-control", id="id_email") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Documents</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Documents de preuve d'identité<span style="color: red;">*</span>
+            {{ form.identite_type(class="form-control", id="id_identite_type") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Autre (à préciser)
+            {{ form.identite_autre(class="form-control", id="id_identite_autre") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Cliquez ici pour insérer la photo de votre document d'identité<span style="color: red;">*</span>
+            {{ form.identite_document(class="form-control-file", id="id_identite_document") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Adresse</p>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            Numéro<span style="color: red;">*</span>
+            {{ form.adresse_numero(class="form-control", id="id_adresse_numero") }}
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            Rue/avenue<span style="color: red;">*</span>
+            {{ form.adresse_rue(class="form-control", id="id_adresse_rue") }}
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            Quartier<span style="color: red;">*</span>
+            {{ form.adresse_quartier(class="form-control", id="id_adresse_quartier") }}
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            Commune<span style="color: red;">*</span>
+            {{ form.adresse_commune(class="form-control", id="id_adresse_commune") }}
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            Ville<span style="color: red;">*</span>
+            {{ form.adresse_ville(class="form-control", id="id_adresse_ville") }}
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            District<span style="color: red;">*</span>
+            {{ form.adresse_district(class="form-control", id="id_adresse_district") }}
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            Province<span style="color: red;">*</span>
+            {{ form.adresse_province(class="form-control", id="id_adresse_province") }}
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            Pays de résidence<span style="color: red;">*</span>
+            {{ form.adresse_pays(class="form-control", id="id_adresse_pays") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Niveau d'études</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Niveau d'études<span style="color: red;">*</span>
+            {{ form.niveau_etudes(class="form-control", id="id_niveau_etudes") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Cliquez ici pour insérer la photo de votre diplôme
+            {{ form.diplome_document(class="form-control-file", id="id_diplome_document") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Pays d'obtention de votre titre<span style="color: red;">*</span>
+            {{ form.diplome_pays(class="form-control", id="id_diplome_pays") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Cliquez ici pour insérer la photo du document d'équivalence
+            {{ form.diplome_equivalence(class="form-control-file", id="id_diplome_equivalence") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Nom de l'institution<span style="color: red;">*</span>
+            {{ form.diplome_institution(class="form-control", id="id_diplome_institution") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Ville<span style="color: red;">*</span>
+            {{ form.diplome_ville(class="form-control", id="id_diplome_ville") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Intitulé exact repris sur le titre<span style="color: red;">*</span>
+            {{ form.diplome_intitule(class="form-control", id="id_diplome_intitule") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Année de début<span style="color: red;">*</span>
+            {{ form.diplome_debut(class="form-control", id="id_diplome_debut") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Année de fin<span style="color: red;">*</span>
+            {{ form.diplome_fin(class="form-control", id="id_diplome_fin") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Formations suivies</p>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            Intitulé de la formation professionnelle suivie
+            {{ form.formation_intitule(class="form-control", id="id_formation_intitule") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Lieu et dates (de … à ….)
+            {{ form.formation_lieu_dates(class="form-control", id="id_formation_lieu_dates") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Organisme de formation
+            {{ form.formation_organisme(class="form-control", id="id_formation_organisme") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Formation qualifiante ou certificative
+            {{ form.formation_qualifiante(class="form-control", id="id_formation_qualifiante") }}
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            Cliquez ici pour insérer la photo du brevet de réussite
+            {{ form.formation_certificative_document(class="form-control-file", id="id_formation_certificative_document") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Vos connaissances spécifiques</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Maîtrise des langues
+            {{ form.langue_parlee(class="form-control", id="id_langue_parlee") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Niveau
+            {{ form.langue_niveau(class="form-control", id="id_langue_niveau") }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Maîtrise de la bureautique
+            {{ form.bureautique_programme(class="form-control", id="id_bureautique_programme") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Niveau de maîtrise
+            {{ form.bureautique_niveau(class="form-control", id="id_bureautique_niveau") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Exemple d'opérations que vous pouvez réaliser
+            {{ form.bureautique_exemple(class="form-control", id="id_bureautique_exemple") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Autres informations</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Avez-vous un permis de conduire ?
+            {{ form.permis_conduire(class="form-control", id="id_permis_conduire") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Catégorie
+            {{ form.permis_categorie(class="form-control", id="id_permis_categorie") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Quel est le montant de salaire souhaité (en $)<span style="color: red;">*</span>
+            {{ form.salaire_souhaite(class="form-control", id="id_salaire_souhaite") }}
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            Raisons de votre inscription à l'ONEM<span style="color: red;">*</span>
+            {{ form.raison_inscription(class="form-control", id="id_raison_inscription") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Votre recherche d'emploi</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Est-ce votre première inscription à l’ONEM ?<span style="color: red;">*</span>
+            {{ form.premiere_inscription(class="form-control", id="id_premiere_inscription") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Numéro repris sur votre Carte de Demandeur d'Emploi
+            {{ form.numero_carte(class="form-control", id="id_numero_carte") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Dernier emploi occupé
+            {{ form.dernier_emploi(class="form-control", id="id_dernier_emploi") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Durée (De ... à ...)
+            {{ form.duree_emploi(class="form-control", id="id_duree_emploi") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Motif de fin de contrat
+            {{ form.motif_fin_contrat(class="form-control", id="id_motif_fin_contrat") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Fonction occupée
+            {{ form.fonction_occupee(class="form-control", id="id_fonction_occupee") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Emploi recherché (Profession/métier)
+            {{ form.emploi_recherche(class="form-control", id="id_emploi_recherche") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            1er choix
+            {{ form.choix1(class="form-control", id="id_choix1") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            2ème choix
+            {{ form.choix2(class="form-control", id="id_choix2") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mx-3">
+      <p class="display-text">Expériences professionnelles antérieures</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            Fonction occupée 1
+            {{ form.experience1_fonction(class="form-control", id="id_experience1_fonction") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Période 1 (De ... à ...)
+            {{ form.experience1_periode(class="form-control", id="id_experience1_periode") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Fonction occupée 2
+            {{ form.experience2_fonction(class="form-control", id="id_experience2_fonction") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Période 2 (De ... à ...)
+            {{ form.experience2_periode(class="form-control", id="id_experience2_periode") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Fonction occupée 3
+            {{ form.experience3_fonction(class="form-control", id="id_experience3_fonction") }}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            Période 3 (De ... à ...)
+            {{ form.experience3_periode(class="form-control", id="id_experience3_periode") }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      {{ form.submit(class="bg-blue-500 text-white px-4 py-2 rounded") }}
+    </div>
+  </form>
+{% endblock %}

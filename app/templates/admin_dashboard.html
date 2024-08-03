@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="text-2xl font-bold mb-4">Admin Dashboard</h2>
+  <table class="table-auto w-full">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Name</th>
+        <th class="px-4 py-2">Email</th>
+        <th class="px-4 py-2">Province</th>
+        <th class="px-4 py-2">Documents</th>
+        <th class="px-4 py-2">Status</th>
+        <th class="px-4 py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for job_seeker in job_seekers %}
+        <tr>
+          <td class="border px-4 py-2">{{ job_seeker.name }}</td>
+          <td class="border px-4 py-2">{{ job_seeker.email }}</td>
+          <td class="border px-4 py-2">{{ job_seeker.province }}</td>
+          <td class="border px-4 py-2">{{ job_seeker.documents }}</td>
+          <td class="border px-4 py-2">{{ 'Verified' if job_seeker.is_verified else 'Pending' }}</td>
+          <td class="border px-4 py-2">
+            {% if not job_seeker.is_verified %}
+              <a href="{{ url_for('main.approve_job_seeker', job_seeker_id=job_seeker.id) }}" class="bg-green-500 text-white px-4 py-2 rounded">Approve</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
